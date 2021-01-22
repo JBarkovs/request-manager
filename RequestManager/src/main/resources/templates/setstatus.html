@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <title>Request Items</title>
+  </head>
+  <body>
+
+    <!-- Navigation Bar, links are disabled -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand">Request Manager</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Features</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Items</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Other</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- End of Navigation Bar -->
+
+    <div class="container p-3">
+      <h2 style="text-align: center;">Review fields and set the request status</h2>
+      <form th:action="@{/updatestatus}" th:object="${requestItem}" method="post">
+        <div class="mb-3">
+          <label class="form-label">ID:</label>
+          <input class="form-control" type="text" th:field="*{id}" readonly></input>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Model name:</label>
+          <input class="form-control" type="text" th:field="*{name}" readonly></input>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Core count:</label>
+          <input class="form-control" type="text" th:field="*{parameter}" readonly></input>
+        </div>
+        <div class="mb-3">
+          <label class="col-form-label">Comment:</label>
+          <textarea class="form-control" type="text" th:field="*{comment}" readonly></textarea>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Time:</label>
+          <input class="form-control" type="text" th:field="*{timeStamp}" readonly></input>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Choose status for the request item:</label>
+            <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="parameter" th:field="*{status}">
+              <option selected value="Approve">Approve</option>
+              <option value="Decline">Decline</option>
+            </select>
+        </div>
+        <div class="btn-toolbar justify-content-between mb-3">
+          <button type="submit" class="btn btn-primary">Save Status</button>
+          <a type="button" style="text-align: right" class="btn btn-secondary" href="/">Cancel</a>
+        </div>
+      </form>
+    </div>
+
+
+    <!-- Footer  -->
+    <footer class="bg-light text-center text-lg-start fixed-bottom">
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2021 Copyright:JB
+      </div>
+    </footer>
+    <!-- End of Footer -->
+
+    <!-- Bootstrap js Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <!-- Other Scripts -->
+  </body>
+</html>
