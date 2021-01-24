@@ -22,7 +22,7 @@ public class RequestItemController {
 	@Autowired
 	private RequestItemService requestItemService;
 	
-	//Passes index.html when starting the application on specified port
+	//Passes index.html and the necessary data when starting the application
 	@RequestMapping(value= "/")
 	public String index(Model model) {
 		List<RequestItem> requestItems = requestItemService.getAllItems();
@@ -30,7 +30,7 @@ public class RequestItemController {
 		return "index";
 	}
 	
-	//Passes newitem.html to display a view for adding a new item to DB 
+	//Passes newitem.html to display a view for a new item to be placed in the DB 
 	@RequestMapping(value= "/new")
 	public static String showNewForm(Model model) {
 		RequestItem requestItem = new RequestItem();
@@ -38,7 +38,7 @@ public class RequestItemController {
 		return "newitem";
 	}
 	
-	//Takes field values to be stored in a new DB entry
+	//Takes field values to be placed in a new DB entry
 	@RequestMapping(value= "/save", method= RequestMethod.POST)
 	public String save(@ModelAttribute("item") RequestItem requestItem) {
 		requestItem.setStatus("Unapproved");

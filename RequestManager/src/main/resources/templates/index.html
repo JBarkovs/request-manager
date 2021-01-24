@@ -9,7 +9,7 @@
 
     <title>Request Items</title>
   </head>
-  <body>
+  <body style="padding-bottom: 40px;">
 
     <!-- Navigation Bar, links are disabled -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -42,30 +42,19 @@
       <a type="button" class="btn btn-success" href="/new">Request New Item</a>
     </div>
 
-    <!-- For table comment tab, delete if won't use -->
-
-    <!-- <a class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" href="#collapseExample"th:="${item.id}" role="button" aria-expanded="false" aria-controls="collapseExample">
-      Open Comment
-    </a>
-    <div class="collapse" id="collapseExample"th:="${item.id}">
-      <div class="card card-body">
-        <p style="color: black" th:text="${requestItem.comment}"/>
-      </div>
-    </div> -->
-
     <!-- Table of Request Items -->
 
     <div class="container-fluid p-3">
       <table class="table table-dark table-striped" border="1" cellpadding="8">
       		<thead>
       			<tr>
-      				<th>ID</th>
-      				<th>Processor</th>
-      				<th>Cores</th>
-              <th>Comment</th>
-              <th>Time</th>
-              <th>Status</th>
-      				<th>Actions</th>
+      				<th style="width: 5%">ID</th>
+      				<th style="width: 10%">Processor</th>
+      				<th style="width: 5%">Cores</th>
+              <th style="width: 30%">Comment</th>
+              <th style="width: 15%">Time</th>
+              <th style="width: 10%">Status</th>
+      				<th style="width: 25%">Actions</th>
       			</tr>
       		</thead>
 
@@ -73,14 +62,22 @@
             <!-- Loop each value of items into the table from items List passed by the RequestItemController -->
       			<tr th:each="requestItem : ${items}">
       				<td th:text="${requestItem.id}">ID</td>
-      				<td class="col-1" th:text="${requestItem.name}">Name</td>
-      				<td class="col-1" th:text="${requestItem.parameter}">Parameter</td>
-              <td class="col-3">
-                <p th:text="${requestItem.comment}"/>
+      				<td th:text="${requestItem.name}">Name</td>
+      				<td th:text="${requestItem.parameter}">Parameter</td>
+              <!-- Collapsable comment field -->
+              <td>
+                <a class="btn btn-outline-light btn-sm" data-bs-toggle="collapse" th:href="'#collapse' + ${requestItem.id}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                  Show Comment
+                </a>
+                <div class="collapse" th:id="'collapse' + ${requestItem.id}">
+                  <div class="card">
+                    <p style="color: black" th:text="${requestItem.comment}"/>
+                  </div>
+                </div>
               </td>
-  						<td class="col-2" th:text="${requestItem.timeStamp}">Time Stamp</td>
-              <td class="col-1" th:text="${requestItem.status}">Status</td>
-  						<td class="col">
+  						<td th:text="${requestItem.timeStamp}">Time Stamp</td>
+              <td th:text="${requestItem.status}">Status</td>
+  						<td>
                 <div class="btn-toolbar col-xs-3">
                   <a class="btn btn-outline-light btn-sm btn-block" style="margin-right: 5px" th:href="@{'/setstatus/' + ${requestItem.id}}">Set Status</a>
                   <a class="btn btn-outline-danger btn-sm btn-block" th:href="@{'/delete/' + ${requestItem.id}}">Delete</a>
@@ -102,5 +99,6 @@
     <!-- Bootstrap js Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <!-- Other Scripts -->
+
   </body>
 </html>

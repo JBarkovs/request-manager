@@ -9,7 +9,7 @@
 
     <title>Request Items</title>
   </head>
-  <body>
+  <body style="padding-bottom: 40px;">
 
     <!-- Navigation Bar, links are disabled -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,10 +38,13 @@
     </nav>
     <!-- End of Navigation Bar -->
 
+
+    <!-- Form with 2 select options and a input (textarea) field -->
     <div class="container p-3">
       <h2 style="text-align: center;">Request new Intel processor</h2>
         <form th:action="@{/save}" method="post">
           <div class="mb-3">
+            <!-- Select one -->
             <label for="Select1" class="form-label">Choose Intel Processor type:</label>
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="name">
               <option selected value="Core i3">Core i3</option>
@@ -51,6 +54,7 @@
             </select>
           </div>
           <div class="mb-3">
+            <!-- Select two -->
             <label for="Select2" class="form-label">Choose amount of cores:</label>
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="parameter">
               <option selected value="2">2</option>
@@ -62,6 +66,7 @@
             </select>
           </div>
           <div class="mb-3">
+            <!-- Input field -->
             <label for="recipient-name" class="col-form-label">Comment:</label>
             <textarea type="text" maxlength="255" class="form-control" placeholder="Please Comment reason for request" aria-label="Username" name="comment" required></textarea>
           </div>
@@ -71,6 +76,7 @@
           </div>
         </form>
       </div>
+      <!-- End of Form -->
 
 
     <!-- Footer  -->

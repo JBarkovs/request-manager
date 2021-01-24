@@ -9,7 +9,7 @@
 
     <title>Request Items</title>
   </head>
-  <body>
+  <body style="padding-bottom: 40px;">
 
     <!-- Navigation Bar, links are disabled -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -38,6 +38,7 @@
     </nav>
     <!-- End of Navigation Bar -->
 
+    <!-- Form to display (readonly) fields of selected object and a select option to change the 'status' field -->
     <div class="container p-3">
       <h2 style="text-align: center;">Review fields and set the request status</h2>
       <form th:action="@{/updatestatus}" th:object="${requestItem}" method="post">
@@ -61,6 +62,7 @@
           <label class="form-label">Time:</label>
           <input class="form-control" type="text" th:field="*{timeStamp}" readonly></input>
         </div>
+        <!-- Select option for 'status' -->
         <div class="mb-3">
           <label class="form-label">Choose status for the request item:</label>
             <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="parameter" th:field="*{status}">
@@ -74,6 +76,7 @@
         </div>
       </form>
     </div>
+    <!-- End of Form -->
 
 
     <!-- Footer  -->
